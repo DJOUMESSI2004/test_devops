@@ -21,6 +21,7 @@ pipeline {
                 ssh $VM_USER@$VM_HOST
                 """
                 echo 'good connection'
+                sh 'dir'
             }
         }
     }
