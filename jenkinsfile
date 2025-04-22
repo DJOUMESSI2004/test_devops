@@ -4,7 +4,7 @@ pipeline {
 
     environment {
         VM_DIR = 'C:/'
-        VM_USER = 'Admiunistrator'
+        VM_USER = 'Administrator'
         VM_HOST = '10.210.64.63'
     }
 
