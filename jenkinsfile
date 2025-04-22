@@ -19,8 +19,8 @@ pipeline {
             steps {
                 sh """
                 ssh $VM_USER@$VM_HOST:$VM_DIR
-                dir
                 """
+                echo 'good connection'
             }
         }
     }
