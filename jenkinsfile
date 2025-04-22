@@ -11,6 +11,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh 'npm install'
+                sh 'npm run build'
                 echo 'hello build'
             }
         }
@@ -18,7 +20,7 @@ pipeline {
         stage('pakage project'){
 
             steps{
-                sh 'zip -r app.zip .'
+                sh 'zip -r app.zip dist'
                 echo 'ziped the project'
             }
 
