@@ -27,7 +27,7 @@ pipeline {
         stage('copy app.zip in vm'){
             steps {
                 sh """
-                scp $VM_USER@$VM_HOST:C:\\test
+                scp app.zip $VM_USER@$VM_HOST:C:\\test
                 """
                 echo 'successfully copied !'
             }
