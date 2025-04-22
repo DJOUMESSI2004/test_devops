@@ -23,7 +23,7 @@ pipeline {
         stage('pakage project'){
 
             steps{
-                sh 'zip -r app.zip dist'
+                sh 'zip -r app.zip ./dist/ .'
                 echo 'ziped the project'
             }
 
