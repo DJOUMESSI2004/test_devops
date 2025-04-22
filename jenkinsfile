@@ -18,7 +18,7 @@ pipeline {
         stage('Display what is found in the c directory'){
             steps {
                 sh """
-                ssh $VM_USER@$VM_HOST:$VM_DIR
+                ssh $VM_USER@$VM_HOST
                 """
                 echo 'good connection'
             }
