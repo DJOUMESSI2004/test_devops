@@ -62,7 +62,7 @@ pipeline {
         stage('deply app') {
             steps {
                 sh """
-            ssh $VM_USER@$VM_IP powershell -Command \
+            ssh $VM_USER@$VM_HOST powershell -Command \
                 "\\\$ProgressPreference = 'SilentlyContinue'; \
                 Expand-Archive -Path 'C:\\\\test\\\\app.zip' -DestinationPath 'C:\\\\test\\\\Final' -Force"
 
