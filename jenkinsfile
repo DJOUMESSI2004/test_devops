@@ -2,10 +2,25 @@
 pipeline {
     agent any
 
+    enviroment {
+        VM_DIR = 'C:/'
+        VM_USER = 'Admiunistrator'
+        VM_HOST = '10.210.64.63'
+    }
+
     stages {
         stage('Build') {
             steps {
                 echo 'hello build'
+            }
+        }
+
+        stage('Display what is found in the c directory'){
+            steps {
+                sh """
+                scp $VM_USER@$VM_HOST:$VM_DIR
+                dir
+                """
             }
         }
     }
