@@ -62,13 +62,13 @@ pipeline {
             }
         }
 
-        stage('deploy app'){
-            steps {
-                sh """
-                ssh $VM_USER@$VM_HOST powershell -command \\
-                    "\\\$ProgressPreference = 'SilentlyContinue'; Expand-Archive -Path 'C:\\\\test\\\\app.zip' -DestinationPath 'C:\\\\test\\\\Final' -Force"
-                """
-            }
+       stage('deply app'){
+        steps {
+            sh """
+            ssh $VM_USER@$VM_HOST Powershell command
+                "\\\$ProgressPreferences = 'SilentContinue'; Expand-Archive -Path 'C:\\\\test\\\\app.zip' -DestinationPath 'C:\\\\test\\\\Final' -force"
+            """
         }
+       }
     }
 }
