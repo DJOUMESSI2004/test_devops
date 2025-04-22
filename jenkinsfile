@@ -18,6 +18,11 @@ pipeline {
                 deleteDir()
             }
         }
+        stage('Clone repository'){
+            steps {
+                git 'https://github.com/DJOUMESSI2004/test_devops.git'
+            }
+        }
         stage('Build') {
             steps {
                 sh 'npm install'
