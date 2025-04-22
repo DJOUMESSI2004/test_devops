@@ -12,13 +12,12 @@ pipeline {
     }
 
     stages {
-
-        stage('clean directory'){
+        stage('clean directory') {
             steps {
                 deleteDir()
             }
         }
-        stage('Clone repository'){
+        stage('Clone repository') {
             steps {
                 git 'https://github.com/DJOUMESSI2004/test_devops.git'
             }
@@ -31,19 +30,17 @@ pipeline {
             }
         }
 
-        stage('pakage project'){
-
-            steps{
+        stage('pakage project') {
+            steps {
                 sh '''
                 cd dist
                 zip -r ../app.zip .
                 '''
                 echo 'ziped the project'
             }
-
         }
 
-        stage('copy app.zip in vm'){
+        stage('copy app.zip in vm') {
             steps {
                 sh """
                 scp app.zip $VM_USER@$VM_HOST:C:/test
@@ -52,7 +49,7 @@ pipeline {
             }
         }
 
-        stage('Display what is found in the c directory'){
+        stage('Display what is found in the c directory') {
             steps {
                 sh """
                 ssh $VM_USER@$VM_HOST
@@ -62,13 +59,15 @@ pipeline {
             }
         }
 
-       stage('deply app'){
-        steps {
-            sh """
-            ssh $VM_USER@$VM_HOST Powershell command
-                "\\\$ProgressPreference = 'SilentlyContinue'; Expand-Archive -Path 'C:\\\\test\\\\app.zip' -DestinationPath 'C:\\\\test\\\\Final' -Force"
+        stage('deply app') {
+            steps {
+                sh """
+            ssh $VM_USER@$VM_IP powershell -Command \
+                "\\\$ProgressPreference = 'SilentlyContinue'; \
+                Expand-Archive -Path 'C:\\\\test\\\\app.zip' -DestinationPath 'C:\\\\test\\\\Final' -Force"
+
             """
+            }
         }
-       }
     }
 }
