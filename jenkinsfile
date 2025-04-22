@@ -2,7 +2,7 @@
 pipeline {
     agent any
 
-    enviroment {
+    environment {
         VM_DIR = 'C:/'
         VM_USER = 'Admiunistrator'
         VM_HOST = '10.210.64.63'
